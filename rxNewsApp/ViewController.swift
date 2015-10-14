@@ -8,21 +8,29 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDataSource,UIScrollViewDelegate{
+class ViewController: UIViewController,UITableViewDataSource,UIScrollViewDelegate {
 
     var newsArray = Array<AnyObject>()
     var slideArray = Array<AnyObject>()
     var articleID = Int()
+    var isiOS7 = false
+    var pageCell = UITableViewCell()
     @IBOutlet weak var newsTable: UITableView!
     @IBOutlet weak var scrollview: UIScrollView!
-    var slidetitle=UILabel()
-    var pageControl=UIPageControl()
+    var slidetitle = UILabel()
+    var pageControl = UIPageControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.newsTable.estimatedRowHeight = 114
-        self.newsTable.rowHeight = UITableViewAutomaticDimension
-        // Do any additional setup after loading the view, typically from a nib.
+        let version = UIDevice.currentDevice().systemVersion
+        let flag = version.compare("8.0.0", options: NSStringCompareOptions.NumericSearch)
+        if flag == .OrderedAscending {
+            isiOS7 = true
+            self.newsTable.estimatedRowHeight = UITableViewAutomaticDimension
+        } else {
+            self.newsTable.estimatedRowHeight = 114
+            self.newsTable.rowHeight = UITableViewAutomaticDimension
+        }
         self.newsTable.header = MJRefreshNormalHeader(refreshingBlock: { () -> Void in
             self.requestData()
         })
@@ -30,8 +38,6 @@ class ViewController: UIViewController,UITableViewDataSource,UIScrollViewDelegat
             self.loadMoreData(self.articleID)
         })
         self.newsTable.header.beginRefreshing()
-        let cell = newsTable.dequeueReusableCellWithIdentifier("pageCell")
-        scrollview = cell!.viewWithTag(1) as! UIScrollView
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,19 +63,14 @@ class ViewController: UIViewController,UITableViewDataSource,UIScrollViewDelegat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = newsTable.dequeueReusableCellWithIdentifier("pageCell")
-//            if cell == nil {
-//                cell = UITableViewCell()
-//                cell.
-//                cell.frame = CGRectMake(0,0,self.view.frame.width,16/9*self.view.frame.width)
-//            }
-            self.scrollview = cell!.viewWithTag(1) as! UIScrollView
+            let cell = newsTable.dequeueReusableCellWithIdentifier("pageCell")!
+            self.scrollview = cell.viewWithTag(1) as! UIScrollView
             scrollview.scrollEnabled=true
             scrollview.pagingEnabled=true
             scrollview.scrollsToTop = false
             scrollview.delegate=self
-            if cell?.viewWithTag(112) == nil{
-                pageControl=UIPageControl(frame: CGRectMake(self.view.frame.width-90,0,100,(cell?.viewWithTag(111)!.frame.height)!))
+            if cell.viewWithTag(112) == nil {
+                pageControl=UIPageControl(frame: CGRectMake(self.view.frame.width-90,0,100,(cell.viewWithTag(111)!.frame.height)))
                 pageControl.currentPageIndicatorTintColor=UIColor.blackColor()
                 pageControl.hidesForSinglePage=true
                 pageControl.backgroundColor=UIColor.clearColor()
@@ -77,28 +78,29 @@ class ViewController: UIViewController,UITableViewDataSource,UIScrollViewDelegat
                 pageControl.pageIndicatorTintColor=UIColor.lightGrayColor()
                 pageControl.hidesForSinglePage=true
                 pageControl.tag=112
-                cell?.viewWithTag(111)?.addSubview(pageControl)
+               cell.viewWithTag(111)?.addSubview(pageControl)
             }
             for i in 0...2 {
                 var view = UIImageView()
                 view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "click"))
                 view.userInteractionEnabled=true
-                if scrollview.viewWithTag(i+2) == nil {
-                    self.slidetitle = cell!.viewWithTag(11) as! UILabel
+                if scrollview.viewWithTag(i+20) == nil {
+                    self.slidetitle = cell.viewWithTag(11) as! UILabel
                     slidetitle.text = slideArray[indexPath.row].objectForKey("title") as? String
+                    view.tag = i+20
                     scrollview.addSubview(view)
                 } else {
-                    view = scrollview.viewWithTag(i+2) as! UIImageView
+                    view = scrollview.viewWithTag(i+20) as! UIImageView
                 }
                 let url = slideArray[i].objectForKey("thumb") as! String
                 view.sd_setImageWithURL(NSURL(string:url), completed: { (uiImage:UIImage!, error:NSError!, cacheType:SDImageCacheType, nsurl:NSURL!) -> Void in
-                    view.frame = CGRectMake(CGFloat(Int(cell!.frame.width)*i),
-                        CGFloat(0),cell!.frame.width,cell!.frame.width/uiImage.size.width*uiImage.size.height)
-                    self.scrollview.contentSize = CGSizeMake(CGFloat(Int(cell!.frame.width)*3),0)
+                    view.frame = CGRectMake(CGFloat(Int(cell.frame.width)*i),
+                        CGFloat(0),cell.frame.width,cell.frame.width/uiImage.size.width*uiImage.size.height)
+                    self.scrollview.contentSize = CGSizeMake(CGFloat(Int(cell.frame.width)*3),0)
                 })
 
             }
-            return cell!
+            return cell
         } else {
             let cell = newsTable.dequeueReusableCellWithIdentifier("rxCell")
             cell!.tag = newsArray[indexPath.row-1].objectForKey("id") as! Int

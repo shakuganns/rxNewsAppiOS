@@ -44,10 +44,10 @@ class CollageViewController: UIViewController,UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          let cell = collageTable.dequeueReusableCellWithIdentifier("collageCell")
         cell!.tag = newsArray[indexPath.row].objectForKey("id") as! Int
-        var title = cell!.contentView.viewWithTag(1) as! UILabel
-        var click = cell!.contentView.viewWithTag(2) as! UILabel
-        var info = cell!.contentView.viewWithTag(3) as! UILabel
-        var time = cell!.contentView.viewWithTag(4) as! UILabel
+        let title = cell!.contentView.viewWithTag(1) as! UILabel
+        let click = cell!.contentView.viewWithTag(2) as! UILabel
+        let info = cell!.contentView.viewWithTag(3) as! UILabel
+        let time = cell!.contentView.viewWithTag(4) as! UILabel
         title.text = newsArray[indexPath.row].objectForKey("title") as? String
         click.text = String(stringInterpolationSegment: newsArray[indexPath.row].objectForKey("click") as! Int)
         info.text = newsArray[indexPath.row].objectForKey("info") as? String
