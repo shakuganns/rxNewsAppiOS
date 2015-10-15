@@ -21,6 +21,8 @@
 		D26734831BC3E35700E63D15 /* tsShowCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26734821BC3E35700E63D15 /* tsShowCardViewController.swift */; };
 		D29BAE221BC502CC00B07DCE /* rxTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29BAE211BC502CC00B07DCE /* rxTabController.swift */; };
 		D2B1B37E1BC54FFE00AAA100 /* TouchImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B1B37D1BC54FFE00AAA100 /* TouchImageView.swift */; };
+		D2BADA391BCEB9DB0009CB77 /* rxNewsPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BADA371BCEB9DB0009CB77 /* rxNewsPageCell.swift */; settings = {ASSET_TAGS = (); }; };
+		D2BADA3A1BCEB9DB0009CB77 /* rxNewsPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2BADA381BCEB9DB0009CB77 /* rxNewsPageCell.xib */; settings = {ASSET_TAGS = (); }; };
 		D2C040601BBFC71A00791443 /* rxNewsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0405F1BBFC71A00791443 /* rxNewsAppTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		D26734821BC3E35700E63D15 /* tsShowCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = tsShowCardViewController.swift; path = rxNewsApp/tsShowCardViewController.swift; sourceTree = "<group>"; };
 		D29BAE211BC502CC00B07DCE /* rxTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rxTabController.swift; path = rxNewsApp/rxTabController.swift; sourceTree = "<group>"; };
 		D2B1B37D1BC54FFE00AAA100 /* TouchImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TouchImageView.swift; path = rxNewsApp/TouchImageView.swift; sourceTree = "<group>"; };
+		D2BADA371BCEB9DB0009CB77 /* rxNewsPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rxNewsPageCell.swift; path = rxNewsApp/rxNewsPageCell.swift; sourceTree = "<group>"; };
+		D2BADA381BCEB9DB0009CB77 /* rxNewsPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = rxNewsPageCell.xib; path = rxNewsApp/rxNewsPageCell.xib; sourceTree = "<group>"; };
 		D2C040441BBFC71A00791443 /* rxNewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxNewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C040591BBFC71A00791443 /* rxNewsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rxNewsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C0405E1BBFC71A00791443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -135,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				D2B1B37D1BC54FFE00AAA100 /* TouchImageView.swift */,
+				D2BADA371BCEB9DB0009CB77 /* rxNewsPageCell.swift */,
+				D2BADA381BCEB9DB0009CB77 /* rxNewsPageCell.xib */,
 			);
 			name = widget;
 			sourceTree = "<group>";
@@ -261,6 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2BADA3A1BCEB9DB0009CB77 /* rxNewsPageCell.xib in Resources */,
 				D23DCFE51BC2737200C32F94 /* LaunchScreen.xib in Resources */,
 				D23DCFE61BC2737200C32F94 /* Main.storyboard in Resources */,
 				D23DCFDE1BC272DD00C32F94 /* Images.xcassets in Resources */,
@@ -322,6 +329,7 @@
 				D26734831BC3E35700E63D15 /* tsShowCardViewController.swift in Sources */,
 				D23DCFE01BC272DD00C32F94 /* ViewController.swift in Sources */,
 				D26734811BC3C5A500E63D15 /* WebViewController.swift in Sources */,
+				D2BADA391BCEB9DB0009CB77 /* rxNewsPageCell.swift in Sources */,
 				85672B001BCBEDE800BCD0D7 /* WebViewController1.swift in Sources */,
 				D23DCFDC1BC272DD00C32F94 /* AppDelegate.swift in Sources */,
 			);

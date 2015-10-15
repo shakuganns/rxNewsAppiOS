@@ -8,15 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDataSource,UIScrollViewDelegate {
+class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate {
 
     var newsArray = Array<AnyObject>()
     var slideArray = Array<AnyObject>()
     var articleID = Int()
     var isiOS7 = false
-    var pageCell = UITableViewCell()
+    var pageInited = false
     @IBOutlet weak var newsTable: UITableView!
-    @IBOutlet weak var scrollview: UIScrollView!
+    var scrollview: UIScrollView!
     var slidetitle = UILabel()
     var pageControl = UIPageControl()
     
@@ -26,7 +26,7 @@ class ViewController: UIViewController,UITableViewDataSource,UIScrollViewDelegat
         let flag = version.compare("8.0.0", options: NSStringCompareOptions.NumericSearch)
         if flag == .OrderedAscending {
             isiOS7 = true
-            self.newsTable.estimatedRowHeight = UITableViewAutomaticDimension
+            
         } else {
             self.newsTable.estimatedRowHeight = 114
             self.newsTable.rowHeight = UITableViewAutomaticDimension
@@ -57,12 +57,33 @@ class ViewController: UIViewController,UITableViewDataSource,UIScrollViewDelegat
         }
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if 0 == indexPath.row {
+            print("----\(indexPath.row)")
+            return 204
+        } else {
+            print("----\(indexPath.row)")
+            return 114
+        }
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
+//            if isiOS7 {
+//                if pageInited {
+//                    let cell = newsTable.dequeueReusableCellWithIdentifier("pageCell1")!
+//                    return cell
+//                } else {
+//                    let cell = rxNewsPageCell(style: UITableViewCellStyle(rawValue: 0)!, reuseIdentifier: "pageCell1")
+//                    cell.controller = self
+//                    pageInited = true
+//                    return cell
+//                }
+//            } else {
             let cell = newsTable.dequeueReusableCellWithIdentifier("pageCell")!
             self.scrollview = cell.viewWithTag(1) as! UIScrollView
             scrollview.scrollEnabled=true
@@ -70,7 +91,14 @@ class ViewController: UIViewController,UITableViewDataSource,UIScrollViewDelegat
             scrollview.scrollsToTop = false
             scrollview.delegate=self
             if cell.viewWithTag(112) == nil {
-                pageControl=UIPageControl(frame: CGRectMake(self.view.frame.width-90,0,100,(cell.viewWithTag(111)!.frame.height)))
+                pageControl=UIPageControl(frame: CGRectMake(0,0,70,(cell.viewWithTag(111)!.frame.height)))
+                let leftConstraint = NSLayoutConstraint(item: pageControl,
+                    attribute: NSLayoutAttribute.Trailing,
+                    relatedBy: NSLayoutRelation.Equal,
+                    toItem: self.view,
+                    attribute: NSLayoutAttribute.Trailing,
+                    multiplier: 1, 
+                    constant: 0)
                 pageControl.currentPageIndicatorTintColor=UIColor.blackColor()
                 pageControl.hidesForSinglePage=true
                 pageControl.backgroundColor=UIColor.clearColor()
@@ -78,8 +106,11 @@ class ViewController: UIViewController,UITableViewDataSource,UIScrollViewDelegat
                 pageControl.pageIndicatorTintColor=UIColor.lightGrayColor()
                 pageControl.hidesForSinglePage=true
                 pageControl.tag=112
-               cell.viewWithTag(111)?.addSubview(pageControl)
+                cell.viewWithTag(111)?.addSubview(pageControl)
+                pageControl.addConstraint(leftConstraint)
             }
+            pageControl = cell.viewWithTag(112) as! UIPageControl
+            pageInited = true
             for i in 0...2 {
                 var view = UIImageView()
                 view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "click"))
@@ -100,11 +131,12 @@ class ViewController: UIViewController,UITableViewDataSource,UIScrollViewDelegat
                 })
 
             }
-            return cell
+                return cell
+//            }
         } else {
             let cell = newsTable.dequeueReusableCellWithIdentifier("rxCell")
             cell!.tag = newsArray[indexPath.row-1].objectForKey("id") as! Int
-            let title = cell!.contentView.viewWithTag(1) as! UITextView
+            let title = cell!.contentView.viewWithTag(1) as! UILabel
             let click = cell!.contentView.viewWithTag(2) as! UILabel
             let info = cell!.contentView.viewWithTag(3) as! UILabel
             let image = cell!.contentView.viewWithTag(4) as! UIImageView
@@ -174,16 +206,18 @@ class ViewController: UIViewController,UITableViewDataSource,UIScrollViewDelegat
         op!.responseSerializer = AFHTTPResponseSerializer()
         op!.start()
     }
-    func scrollViewDidScroll(scrollView: UIScrollView)
-    {
-        let pageWidth = scrollview.frame.size.width
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if pageInited {
+        let pageWidth = scrollview.frame.width
         let page = Int(floor((scrollview.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
         pageControl.currentPage=page
         self.slidetitle.text = slideArray[page].objectForKey("title") as? String
         print(page)
+        }
     }
-    func click()
-    {
+    
+    func click() {
         let wv=WebViewController1()
         wv.id=(slideArray[pageControl.currentPage].objectForKey("id") as? Int)!
         self.navigationController?.pushViewController(wv, animated: true)
