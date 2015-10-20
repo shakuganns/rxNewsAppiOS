@@ -11,7 +11,6 @@
 		85672B001BCBEDE800BCD0D7 /* WebViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85672AFF1BCBEDE800BCD0D7 /* WebViewController1.swift */; settings = {ASSET_TAGS = (); }; };
 		D23DCFDC1BC272DD00C32F94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DCFD71BC272DD00C32F94 /* AppDelegate.swift */; };
 		D23DCFDE1BC272DD00C32F94 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23DCFD91BC272DD00C32F94 /* Images.xcassets */; };
-		D23DCFDF1BC272DD00C32F94 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23DCFDA1BC272DD00C32F94 /* Info.plist */; };
 		D23DCFE01BC272DD00C32F94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DCFDB1BC272DD00C32F94 /* ViewController.swift */; };
 		D23DCFE51BC2737200C32F94 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23DCFE31BC2737200C32F94 /* LaunchScreen.xib */; };
 		D23DCFE61BC2737200C32F94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23DCFE41BC2737200C32F94 /* Main.storyboard */; };
@@ -24,6 +23,8 @@
 		D2BADA391BCEB9DB0009CB77 /* rxNewsPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BADA371BCEB9DB0009CB77 /* rxNewsPageCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D2BADA3A1BCEB9DB0009CB77 /* rxNewsPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2BADA381BCEB9DB0009CB77 /* rxNewsPageCell.xib */; settings = {ASSET_TAGS = (); }; };
 		D2C040601BBFC71A00791443 /* rxNewsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0405F1BBFC71A00791443 /* rxNewsAppTests.swift */; };
+		D2FC4D991BD4C89D00F18240 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC4D981BD4C89D00F18240 /* UserViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D2FC4D9B1BD4CE6700F18240 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC4D9A1BD4CE6700F18240 /* SettingViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		D2C040591BBFC71A00791443 /* rxNewsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rxNewsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C0405E1BBFC71A00791443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2C0405F1BBFC71A00791443 /* rxNewsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rxNewsAppTests.swift; sourceTree = "<group>"; };
+		D2FC4D981BD4C89D00F18240 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserViewController.swift; path = rxNewsApp/UserViewController.swift; sourceTree = "<group>"; };
+		D2FC4D9A1BD4CE6700F18240 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = rxNewsApp/SettingViewController.swift; sourceTree = "<group>"; };
 		F4200A8D112B17FCC73B7358 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DFE015847CD4C3C33E8EF1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +134,8 @@
 				D23DCFED1BC27F8B00C32F94 /* TushuoViewController.swift */,
 				D26734821BC3E35700E63D15 /* tsShowCardViewController.swift */,
 				D23DCFEB1BC27ED400C32F94 /* CollageViewController.swift */,
+				D2FC4D981BD4C89D00F18240 /* UserViewController.swift */,
+				D2FC4D9A1BD4CE6700F18240 /* SettingViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -230,7 +235,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Shakugan;
 				TargetAttributes = {
 					D2C040431BBFC71A00791443 = {
@@ -271,7 +276,6 @@
 				D23DCFE51BC2737200C32F94 /* LaunchScreen.xib in Resources */,
 				D23DCFE61BC2737200C32F94 /* Main.storyboard in Resources */,
 				D23DCFDE1BC272DD00C32F94 /* Images.xcassets in Resources */,
-				D23DCFDF1BC272DD00C32F94 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +329,7 @@
 				D2B1B37E1BC54FFE00AAA100 /* TouchImageView.swift in Sources */,
 				D23DCFEE1BC27F8B00C32F94 /* TushuoViewController.swift in Sources */,
 				D29BAE221BC502CC00B07DCE /* rxTabController.swift in Sources */,
+				D2FC4D991BD4C89D00F18240 /* UserViewController.swift in Sources */,
 				D23DCFEC1BC27ED400C32F94 /* CollageViewController.swift in Sources */,
 				D26734831BC3E35700E63D15 /* tsShowCardViewController.swift in Sources */,
 				D23DCFE01BC272DD00C32F94 /* ViewController.swift in Sources */,
@@ -332,6 +337,7 @@
 				D2BADA391BCEB9DB0009CB77 /* rxNewsPageCell.swift in Sources */,
 				85672B001BCBEDE800BCD0D7 /* WebViewController1.swift in Sources */,
 				D23DCFDC1BC272DD00C32F94 /* AppDelegate.swift in Sources */,
+				D2FC4D9B1BD4CE6700F18240 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +381,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -446,6 +453,7 @@
 				INFOPLIST_FILE = rxNewsApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ecjtu.net.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "rxNewsApp/rxNewsApp-Bridging-Header.h";
@@ -464,6 +472,7 @@
 				INFOPLIST_FILE = rxNewsApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ecjtu.net.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "rxNewsApp/rxNewsApp-Bridging-Header.h";
@@ -485,6 +494,7 @@
 				);
 				INFOPLIST_FILE = rxNewsAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ecjtu.net.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rxNewsApp.app/rxNewsApp";
 			};
@@ -500,6 +510,7 @@
 				);
 				INFOPLIST_FILE = rxNewsAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ecjtu.net.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rxNewsApp.app/rxNewsApp";
 			};

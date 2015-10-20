@@ -73,17 +73,6 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-//            if isiOS7 {
-//                if pageInited {
-//                    let cell = newsTable.dequeueReusableCellWithIdentifier("pageCell1")!
-//                    return cell
-//                } else {
-//                    let cell = rxNewsPageCell(style: UITableViewCellStyle(rawValue: 0)!, reuseIdentifier: "pageCell1")
-//                    cell.controller = self
-//                    pageInited = true
-//                    return cell
-//                }
-//            } else {
             let cell = newsTable.dequeueReusableCellWithIdentifier("pageCell")!
             self.scrollview = cell.viewWithTag(1) as! UIScrollView
             scrollview.scrollEnabled=true
@@ -129,10 +118,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
                         CGFloat(0),cell.frame.width,cell.frame.width/uiImage.size.width*uiImage.size.height)
                     self.scrollview.contentSize = CGSizeMake(CGFloat(Int(cell.frame.width)*3),0)
                 })
-
             }
-                return cell
-//            }
+            return cell
         } else {
             let cell = newsTable.dequeueReusableCellWithIdentifier("rxCell")
             cell!.tag = newsArray[indexPath.row-1].objectForKey("id") as! Int
@@ -209,11 +196,11 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if pageInited {
-        let pageWidth = scrollview.frame.width
-        let page = Int(floor((scrollview.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
-        pageControl.currentPage=page
-        self.slidetitle.text = slideArray[page].objectForKey("title") as? String
-        print(page)
+            let pageWidth = scrollview.frame.width
+            let page = Int(floor((scrollview.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
+            pageControl.currentPage=page
+            self.slidetitle.text = slideArray[page].objectForKey("title") as? String
+            print(page)
         }
     }
     
